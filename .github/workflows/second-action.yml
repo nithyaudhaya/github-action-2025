@@ -1,4 +1,4 @@
-name: Second Action
+name: Second Workflow
 on: workflow-dispatch
 jobs:
   test:
