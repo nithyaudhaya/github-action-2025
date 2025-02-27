@@ -1,16 +1,20 @@
-name: Second Workflow
-on: workflow-dispatch
+name: Run Hello-world from py Script
+on: push
+
 jobs:
-  test:
+  Hello:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Clone repo
         id: checkout
         uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-puthon@v4
         with:
-          token: ${{ secrets.GLCP_GH_TOKEN }}
-          repository: github-action-2025
-      - name: Install requirements
-        run: pip3 install -r requirements.txt
-      - name: Run script
-        run: python3 second-action.py
+          python-version: '3.10'
+
+      - name: Run a py Script
+        run: python hello.py
+      
