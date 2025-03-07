@@ -38,6 +38,7 @@ jobs:
       - name: Publish HTML filename
         id: publish
         run: |
+          ls -R
           find download/*.html -type f -execdir echo 'something={}' $GITHUB-OUTPUT ';'
           cd ..
       - name: Upload Artifact GitHub Action
