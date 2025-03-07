@@ -33,11 +33,13 @@ jobs:
           echo 'alpha'    > alpha.html
           echo 'beta'     > beta.html
           echo 'prod'     > prod.html
-          cd ..
+          # cd ..
 
       - name: Publish HTML filename
         id: publish
-        run: find download/*.html -type f -execdir echo 'something={}' $GITHUB-OUTPUT ';'
+        run: |
+          find download/*.html -type f -execdir echo 'something={}' $GITHUB-OUTPUT ';'
+          cd ..
       - name: Upload Artifact GitHub Action
         uses: actions/upload-artifact@v4
         with: 
