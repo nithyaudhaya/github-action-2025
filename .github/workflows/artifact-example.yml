@@ -10,7 +10,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Run tests
       run: |
@@ -39,7 +39,7 @@ jobs:
         id: publish
         run: find download/*.html -type f -execdir echo 'something={}' $GITHUB-OUTPUT ';'
       - name: Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with: 
           name: assets-for-download
           path: downloads
@@ -51,7 +51,7 @@ jobs:
     steps:
 
       - name: Download Artifact GitHub Action
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with: 
           name: assets-for-download
       - name: Test artifacts download
