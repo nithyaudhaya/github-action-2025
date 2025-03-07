@@ -1,0 +1,63 @@
+# Publish GitHub workflow artifacts tutorial example
+name: Artifacts Example & Outputs
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+     
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Run tests
+      run: |
+        echo "Test Artifacts Projects"
+
+  build-artifacts-project:
+    name: Build artifacts project
+    needs: test
+    runs-on: ubuntu-latest
+    outputs:
+      script-file: ${{steps.publish.outputs.something}}
+
+    steps:
+      - name: Create a temporary artifact downloads folder
+        run: mkdir downloads
+        
+      - name: Add artifacts to publish to the temp folder
+        run: |
+          cd downloads
+          echo 'alpha'    > alpha.html
+          echo 'beta'     > beta.html
+          echo 'prod'     > prod.html
+          cd ..
+
+      - name: Publish HTML filename
+        id: publish
+        run: find download/*.html -type f -execdir echo 'something={}' $GITHUB-OUTPUT ';'
+      - name: Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v3
+        with: 
+          name: assets-for-download
+          path: downloads
+
+  release-artifacts-project:
+    name: Release artifacts project
+    runs-on: ubuntu-latest
+    needs: build-artifacts-project
+    steps:
+
+      - name: Download Artifact GitHub Action
+        uses: actions/download-artifact@v3
+        with: 
+          name: assets-for-download
+      - name: Test artifacts download
+        run: ls -R
+      - name: Output file name
+        run : echo "${{needs.build-artifacts-project.outputs.script-file}}"
+
+
+      
