@@ -1,0 +1,19 @@
+name: Custom Environment Variables
+
+on: push
+
+env:
+    MAIN_PROJECT: Main project
+
+jobs:
+    my-project:
+        runs-on: ubuntu-latest
+        env:
+            PRIMARY: Primary work
+        steps:
+            - name: "Please follow priority tasks" 
+              run: echo "$MAIN_PROJECT - First priority is $PRIMARY and then $SECONDARY"
+              env:
+                SECONDARY: Secondary work
+
+
