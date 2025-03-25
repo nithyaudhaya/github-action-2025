@@ -4,7 +4,7 @@ on: push
 
 jobs:
     default-env-variables:
-        runs-on: ubuntu-lates
+        runs-on: ubuntu-latest
         steps:
             - name: Default Environment variables
               run: |
