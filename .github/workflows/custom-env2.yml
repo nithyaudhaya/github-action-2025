@@ -1,0 +1,14 @@
+name: Github Secrets - Custom Env Variables
+
+on: push
+
+jobs:
+    build-and-deploy:
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Demo secret
+              run: |
+                echo &{{ secrets.DEMO_SECRETS }} 
+       

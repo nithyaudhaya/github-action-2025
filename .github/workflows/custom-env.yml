@@ -12,8 +12,7 @@ jobs:
             PRIMARY: Primary work
         steps:
             - name: "Please follow priority tasks" 
-              run: echo "$MAIN_PROJECT - First priority is $PRIMARY and then $SECONDARY"
+              run: |
+               echo "$MAIN_PROJECT - First priority is $PRIMARY and then $SECONDARY"
               env:
                 SECONDARY: Secondary work
-
-
