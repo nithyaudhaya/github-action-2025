@@ -10,5 +10,5 @@ jobs:
         steps:
             - name: Demo secret
               run: |
-                echo ${{ secrets.DEMO_SECRETS }} 
+                echo ${{secrets.DEMO_SECRETS}}
        
