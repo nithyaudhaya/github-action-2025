@@ -60,6 +60,7 @@ jobs:
         run: ls -R
       - name: Output file name
         run : echo "${{needs.build-artifacts-project.outputs.script-file}}"
+        
 
 
       
