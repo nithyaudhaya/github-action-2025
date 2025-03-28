@@ -3,16 +3,18 @@ name: Custom Environment Variables
 on: push
 
 env:
-    MAIN_PROJECT: Main project
+    MAIN_PROJECT: Main project # Global environment variable accessible to all jobs and steps
+    DEMO_PROJECT: ${{vars.DEMO_PROJECT}}
 
 jobs:
     my-project:
         runs-on: ubuntu-latest
         env:
-            PRIMARY: Primary work
+            PRIMARY: Primary work # Environment variable only for this job
         steps:
             - name: "Please follow priority tasks" 
               run: |
                echo "$MAIN_PROJECT - First priority is $PRIMARY and then $SECONDARY"
+               echo "$DEMO_PROJECT"
               env:
                 SECONDARY: Secondary work

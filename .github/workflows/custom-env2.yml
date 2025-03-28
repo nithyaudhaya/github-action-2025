@@ -10,7 +10,4 @@ jobs:
         steps:
             - name: Demo secret
               run: |
-                echo "$SECRET_TOKEN"
-              env: 
-                SECRET_TOKEN: ${{secrets.SecretToken}}
-
+                echo ${{secrets.DEMO_SECRETS}}
