@@ -4,6 +4,7 @@ on: push
 
 env:
     MAIN_PROJECT: Main project # Global environment variable accessible to all jobs and steps
+    DEMO_SEC: ${{secrets.DEMO_SECRETS}} # Global environment secret - defined in Actions-> Secrets
     ORG_VAR: ${{vars.ORGANIZATION_VAR}} # Global environment variable- defined in Actions-> Variables
 
 jobs:
@@ -15,6 +16,7 @@ jobs:
             - name: "Please follow priority tasks" 
               run: |
                echo "$MAIN_PROJECT : First priority is $PRIMARY and then $SECONDARY"
-               echo "organization variable : $ORG_VAR"
+               echo "DEMO_SECRETS  : $DEMO_SEC"
+               echo "ORGANIZATION variable : $ORG_VAR"
               env:
                 SECONDARY: Secondary work # Environment variable only for this steps
