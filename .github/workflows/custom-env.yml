@@ -15,6 +15,6 @@ jobs:
             - name: "Please follow priority tasks" 
               run: |
                echo "$MAIN_PROJECT : First priority is $PRIMARY and then $SECONDARY"
-               echo "organization variable : $ORGANIZATION_VAR"
+               echo "organization variable : $ORG_VAR"
               env:
                 SECONDARY: Secondary work # Environment variable only for this steps
